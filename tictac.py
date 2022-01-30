@@ -5,7 +5,7 @@ O = "O"
 EMPTY = "*"
 
 # Bigger board sizes are less likely
-RANDOM_SIZES = [3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 6]
+RANDOM_SIZES = [3, 3, 3, 3, 3, 3, 4, 4, 4, 5, 5, 6]
 
 # Type aliases
 Player = str
@@ -57,10 +57,8 @@ def check_diagonals_reverse(board, player):
             return False
     return True
 
-
 def won(player: Player, board: Board) -> bool:
     return check_rows(board, player) or check_columns(board, player) or check_diagonals(board, player) or check_diagonals_reverse(board, player)
-
 
 
 def update_board(board: Board, player: Player, coords: Coords):
@@ -128,6 +126,8 @@ def play_game(board_size: int = None):
         show_board(board)
         coordinates = get_move(current_player)
         update_board(board, current_player, coordinates)
+        if(won(current_player, board)):
+            break
         current_player = switch_player(current_player)
     show_winner(current_player)
 
