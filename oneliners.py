@@ -45,8 +45,8 @@ def union(items, more_items):
     Unites 2 lists/tuples into a list/tuple that contains all their elements without duplication.
     The return type must be that of the first argument `items`.
     """
-    return set(items).union(more_items)
-print(union([1, 4, 3], (1, 4, 5)))
+    return type(items)(set(items).union(more_items))
+print(union((1, 4,4, 5), (1, 4,4, 5)))
 
 
 # This is not a one-liner challenge, but should be 4 lines max
@@ -110,10 +110,8 @@ def is_prime(num):
     Hints:
     - I can do this any day, and all day long!
     """
-    numbers = [2,3,4,5,6,7,8,9,10]
-    print(i for i in numbers if type(num/i) != float and num != i)
-    return len([i for i in numbers if type(num/i) != float and num != i]) == 0
-print(is_prime(4))
+    return len([i for i in {2,3,4,5,6,7,8,9,10, num} if num % i == 0]) == 1 
+print(is_prime(67))
 
 def caesar_encrypt(plain, key):
     """
